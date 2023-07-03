@@ -58,11 +58,16 @@ def main(value):
         except:
             pass
         try:
-            res_from = b[i]["from"]
+            res = b[i]["from"].split()[-1]
+            x = res[:6] + (len(res) - 10) * '*' + res[-4:]
+            card_number = [x[i:i + 4] for i in range(0, len(x), 4)]
+            res_from = " ".join(card_number)
+
         except:
             res_from = None
         try:
             res_to = b[i]["to"]
+            res_to = (len(list(res_to.split()[-1:][0])) - 4) * '*' + res_to[-4::]
         except:
             res_to = None
         try:
